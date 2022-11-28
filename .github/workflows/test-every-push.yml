@@ -1,14 +1,14 @@
 # test-every-push.yml
 
 # workflow의 이름. 나중에 해당 값을 사용할 수 있기 때문에 저는 유니크하게 사용합니다.
-name: 'test-every-push'
+name: 'test-every-push' # 워크플로우 이름 (해당 페이지(지금 이 페이지) 전체를 지칭하는 이름(프로젝트 이름 같이). 깃허브 액션탭에 요 이름으로 뜸???)
 
 # workflow를 동작하게하는 trigger입니다.
 # repository에 push 이벤트가 발생할 때마다 실행될 거예요.
 # push 말고도 여러 가지 이벤트들이 있겠죠?
 on: 
   push: # push할 때 깃허브 액션 실행
-    branches: [ "main" ] # push하면서 동시에 위치가 main브랜치일 때 깃허브 액선 실행
+    branches: [ "main" ] # push하면서 동시에 위치가 main브랜치일 때 깃허브 액션 실행
 
 # job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행할 수 있어요.
 # 여러 개의 job을 사용할 수 있으며, 여러 개의 job을 사용할 때는 서로 정보도 교환할 수 있어요.
@@ -97,7 +97,7 @@ jobs:
         # 실패했을 때 실행되겠죠?
         if: ${{ failure() }}
         # 직접 '만든' Action이므로 uses 키워드를 이용해서 아래 경로를 입력해줍니다.
-        uses: ./.github/actions/slack-notify
+        uses: ./.github/actions
         # 아까 secrets로 접근할 수 있게 만들어놓은 슬랙 url을 여기에 써볼게요.
         # with 키워드와 함께 slack_incoming_url 값으로 넘겨줍니다.
         with:
@@ -106,7 +106,7 @@ jobs:
       - name: Send slack if completed
         # 성공할 때만 실행되겠죠?
         if: ${{ success() }}
-        uses: ./.github/actions/slack-notify
+        uses: ./.github/actions
         # status input은 받는 쪽에서 default 값을 정해놨기 때문에 success일 때만 넘겨줄게요.
         with:
           status: success
