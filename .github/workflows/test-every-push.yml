@@ -28,7 +28,7 @@ jobs:
       # 마치 우리가 브랜치를 만들 때 checkout하는 것처럼요. 꼭 필요합니다.
       # 참고로 아래 코드는 누군가 만들어놓은 Action을 사용하는 겁니다.
       # 만들어놓은 Action을 사용할 때는 uses라는 키워드를 사용해야 돼요.
-      - uses: google-github-actions/setup-gcloud@v0
+      - uses: actions/checkout@v2
 
       # 해당 환경을 Node.js 위에서 실행하겠다고 명시해줍니다.
       # 저희 프로젝트는 리액트니깐요!
@@ -97,7 +97,7 @@ jobs:
         # 실패했을 때 실행되겠죠?
         if: ${{ failure() }}
         # 직접 '만든' Action이므로 uses 키워드를 이용해서 아래 경로를 입력해줍니다.
-        uses: ./.github/actions
+        uses: ./.github/actions/slack-notify
         # 아까 secrets로 접근할 수 있게 만들어놓은 슬랙 url을 여기에 써볼게요.
         # with 키워드와 함께 slack_incoming_url 값으로 넘겨줍니다.
         with:
@@ -106,10 +106,9 @@ jobs:
       - name: Send slack if completed
         # 성공할 때만 실행되겠죠?
         if: ${{ success() }}
-        uses: ./.github/actions
+        # uses: ./.github/actions/slack-notify
+        uses: google-github-actions/setup-gcloud@v0
         # status input은 받는 쪽에서 default 값을 정해놨기 때문에 success일 때만 넘겨줄게요.
         with:
           status: success
           slack_incoming_url: ${{ secrets.SLACK_INCOMING_URL }}
-
-          
