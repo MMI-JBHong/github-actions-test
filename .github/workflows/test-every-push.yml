@@ -13,7 +13,7 @@ on:
       # - main 
       # - 'release/*' # main브랜치 외에 다른 브랜치에서 커밋 메시지 이름에 release/나 build/가 들어가더라도 깃허브 액션 실행되지 않음
       # - 'build/*' 
-    branches: 
+    branches: #
       - main && 'release/*' # push하면서 위치가 main브랜치'이면서 커밋 메시지 이름에 'release/'가 들어가야 깃허브 액션 실행(두 조건 모두를 충족해야 깃허브 액션 실행)
 
 # job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행할 수 있어요.
