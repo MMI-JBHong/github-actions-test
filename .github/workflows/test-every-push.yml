@@ -11,7 +11,7 @@ on:
     # branches: [ "main" ] # push하면서 동시에 위치가 main브랜치일 때 깃허브 액션 실행
     branches: 
       - main # push하면서 동시에 위치가 main브랜치일 때 깃허브 액션 실행
-      - 'release/*' #
+      - 'release/*' ##
       - 'build/*'
 
 # job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행할 수 있어요.
