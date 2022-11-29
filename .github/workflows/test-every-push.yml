@@ -9,10 +9,12 @@ name: 'test-every-push' # 워크플로우 이름 (해당 페이지(지금 이 �
 on: 
   push: # push할 때 깃허브 액션 실행
     # branches: [ "main" ] # push하면서 동시에 위치가 main브랜치일 때 깃허브 액션 실행
-    branches: 
-      - main # push하면서 동시에 위치가 main브랜치'이거나'
-      - 'release/*' #커밋 메시지 이름에 release/가 들어'가거나'
-      - 'build/*' #커밋 메시지 이름에 build/가 들어가면(셋 중 하나에 해당되면) 깃허브 액선 실행
+    # branches: # push하면서 위치가 main브랜치'이면 깃허브 액션 실행(커밋 메시지 이름에 release/나 build가 들어가지 않아도)
+      # - main 
+      # - 'release/*' # main브랜치 외에 다른 브랜치에서 커밋 메시지 이름에 release/나 build/가 들어가더라도 깃허브 액션 실행되지 않음
+      # - 'build/*' 
+    branches: # push하면서 위치가 main브랜치'이면 깃허브 액션 실행(커밋 메시지 이름에 release/나 build가 들어가지 않아도)
+      - main && 'release/*'
 
 # job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행할 수 있어요.
 # 여러 개의 job을 사용할 수 있으며, 여러 개의 job을 사용할 때는 서로 정보도 교환할 수 있어요.
