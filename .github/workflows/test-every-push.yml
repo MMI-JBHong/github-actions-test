@@ -23,10 +23,14 @@ name: 'test-every-push' # 워크플로우 이름 (해당 페이지(지금 이 �
     # tags:
       # - "release/*" # main브랜치 외 다른 브랜치에서 release/를 넣어 push하더라도 깃허브 액션 실행되지 않음
 
+# on:
+  # push:
+    # branches: # 아래 코드로는 아무일도 일어나지 않음 (오류인 듯...)
+      #  main + 'release/*' # push하면서 위치가 main브랜치'이면서 커밋 메시지에 release/가 들어가면 깃허브 액션 실행되길 바랐지만 아무일도 일어나지 않음
+
 on:
   push:
-    branches:
-      - main + 'release/*' # push하면서 위치가 main브랜치'이면
+    branches: [ main, 'release/*' ]
 
 # job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행할 수 있어요.
 # 여러 개의 job을 사용할 수 있으며, 여러 개의 job을 사용할 때는 서로 정보도 교환할 수 있어요.
