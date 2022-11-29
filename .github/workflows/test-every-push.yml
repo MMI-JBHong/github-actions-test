@@ -10,9 +10,9 @@ on:
   push: # push할 때 깃허브 액션 실행
     # branches: [ "main" ] # push하면서 동시에 위치가 main브랜치일 때 깃허브 액션 실행
     branches: 
-      - main # push하면서 동시에 위치가 main브랜치일 때 깃허브 액션 실행
-      - 'release/*' #
-      - 'build/*'
+      - main # push하면서 동시에 위치가 main브랜치'이거나'
+      - 'release/*' #커밋 메시지 이름에 release/가 들어'가거나'
+      - 'build/*' #커밋 메시지 이름에 build/가 들어가면(셋 중 하나에 해당되면) 깃허브 액선 실행
 
 # job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행할 수 있어요.
 # 여러 개의 job을 사용할 수 있으며, 여러 개의 job을 사용할 때는 서로 정보도 교환할 수 있어요.
