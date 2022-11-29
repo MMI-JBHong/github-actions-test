@@ -9,7 +9,7 @@ name: 'test-every-push' # 워크플로우 이름 (해당 페이지(지금 이 �
 on: 
   push: # push할 때 깃허브 액션 실행
     # branches: [ "main" ] # push하면서 동시에 위치가 main브랜치일 때 깃허브 액션 실행
-    branches: #
+    branches: 
       - main # push하면서 동시에 위치가 main브랜치'이거나'
       - 'release/*' #커밋 메시지 이름에 release/가 들어'가거나'
       - 'build/*' #커밋 메시지 이름에 build/가 들어가면(셋 중 하나에 해당되면) 깃허브 액선 실행
